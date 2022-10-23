@@ -3,7 +3,7 @@ module.exports.home = function(request, response) {
 
     return response.render('home', {
         title: "Home"
-    });
+    }); 
 }
 // module .exports.home = function(request, response) {s}
 // Now I need to access this fn. in routes
