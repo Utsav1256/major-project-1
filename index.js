@@ -6,6 +6,8 @@ const port = 8000;
 
 const expressLayouts = require('express-ejs-layouts');
 
+app.use(express.static('./assets'));
+
 app.use(expressLayouts);
 // we need todo this before requiring the routes
 // bcz. in the routes those views going to be rendered
