@@ -12,6 +12,10 @@ app.use(expressLayouts);
 // we need todo this before requiring the routes
 // bcz. in the routes those views going to be rendered
 
+// extract style and scripts from sub pages into the layout
+app.set('layout extractStyles', true);
+app.set('layout extractScripts', true);
+
 
 // here we are using that express router
 app.use('/', require('./routes/index'));
