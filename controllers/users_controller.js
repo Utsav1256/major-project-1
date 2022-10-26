@@ -1,3 +1,6 @@
+const User = require('../models/user');
+
+
 module.exports.profile = function(request, response) {
    // return response.end('<h1>User Profile</h1>');
 
@@ -22,7 +25,40 @@ module.exports.signIn = function(request, response) {
 
 // get the sign up data
 module.exports.create = function(request, response) {
-   // TODO later
+      if(request.body.password != request.body.confirm_password) {
+         return response.redirect('back');
+      }
+
+      // if password is same
+      User.findOne({email: request.body.email}, function(err, user) {
+         if(err) {
+            console.log('error in finding user in signing up');
+            return;
+         }
+
+         // if user is not found or the user is not there
+         if(!user) {
+            User.create(request.body, function(err, user) {
+               if(err) {
+                  console.log('error in creating user while signing up');
+                  return;
+               }
+
+               // if not, then the user is created
+               // then where do we send the user to
+               // the sign in page
+               return response.redirect('/users/sign-in');
+            })
+         }
+         // if user is already present then, what we do
+         // we redirect back to the sign-up page
+         else {
+            return response.redirect('back');
+         }
+         // in both the cases
+         // when password does not match with confirm_password or the user already exists,
+         // we are sending back to the sign-up page
+      })
 }
 
 
