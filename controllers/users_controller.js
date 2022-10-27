@@ -102,13 +102,9 @@ module.exports.createSession = function(request, response) {
           return response.redirect('back');
        }
    })
+}
 
-  
-
-
-
-  
-
-
-
+// sign out 
+module.exports.signOut = function(request, response) {
+   return response.redirect('/users/sign-in');
 }
