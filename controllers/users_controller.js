@@ -104,7 +104,11 @@ module.exports.createSession = function(request, response) {
    })
 }
 
-// sign out 
+// sign out  and deleting cookie
 module.exports.signOut = function(request, response) {
+  
+   response.clearCookie('user_id');
+
    return response.redirect('/users/sign-in');
 }
+
