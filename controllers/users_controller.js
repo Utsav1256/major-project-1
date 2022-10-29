@@ -64,5 +64,8 @@ module.exports.create = function(request, response) {
 
 // sign in and create a session for the user
 module.exports.createSession = function(request, response) {
-   // TODO later
+   return response.redirect('/');
 }
+// when passport.js uses the fn.'LocalStrategy' to authenticate the user, 
+// the control comes over here
+// and this redirects to the home page
