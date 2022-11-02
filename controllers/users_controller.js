@@ -77,3 +77,18 @@ module.exports.createSession = function(request, response) {
 // when passport.js uses the fn.'LocalStrategy' to authenticate the user, 
 // the control comes over here
 // and this redirects to the home page
+
+
+module.exports.distroySession = function(request, response, next) {
+   // logging out
+ 
+   request.logout(function(err) {
+      if(err){
+         return next(err);
+      }
+      return response.redirect('/');
+   });
+   // this fn. is given to request by passport.js
+
+  
+}

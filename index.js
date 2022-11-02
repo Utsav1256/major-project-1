@@ -42,7 +42,7 @@ app.use(session( {
     // what is the name of my cookie
     name: 'codeial',
     // whenever encryption happens there is a key to encode and decode it.
-    // so to encode it we are going to use a key
+    // so to encode it, we are going to use a key
     // TODO change the secret before deployment in production mode
     secret: 'blahsomething',
     saveUninitialized: false,
@@ -77,6 +77,6 @@ app.listen(port, function(err) {
     if(err) {
         console.log(`Error in running the server: ${err}`);
     }
-    console.log(`Server is running on port: ${port}`)
+    console.log(`Server is running on port: ${port}`);
 
 });
