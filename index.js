@@ -18,8 +18,8 @@ const  sassMiddleware = require('node-sass-middleware');
 
 
 app.use(sassMiddleware({
-    src: '/assets/scss', // from where do i pickup scss file to convert it in to css
-    dest: 'asseys/css', // where do I need to put my css files
+    src: './assets/scss', // from where do i pickup scss file to convert it in to css
+    dest: './assets/css', // where do I need to put my css files
     debug: true, // whatever information thst you see while server is running over here in the terminal, do i want to display some errors thst are there in the file during compilation and they are not able to convert that file --> yess
     outputStyle: 'extended', // do you want code in single lines or multiple lines
     prefix: '/css' // where do i look out, since we are using this middleware, so where should my server look out for css files

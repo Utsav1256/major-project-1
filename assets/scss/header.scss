@@ -1,0 +1,11 @@
+header {
+    margin: 10 auto;
+    font-size: 30px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+}
+header li {
+    display: flex;
+    align-items: flex-start;
+}
