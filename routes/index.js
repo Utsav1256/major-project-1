@@ -21,7 +21,7 @@ router.use('/users', require('./users'));
 // router.use('/routerName', require('./routerfile)); 
 
 
-
+router.use('/posts', require('./posts'));
 
 
 

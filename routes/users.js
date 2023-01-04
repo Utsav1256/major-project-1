@@ -12,7 +12,7 @@ const postsController = require('../controllers/posts_controller');
 // now I just need to map a route to this users_controller's fn.
 router.get('/profile', passport.checkAuthentication, usersController.profile);
 
-router.get('/posts', postsController.posts);
+// router.get('/posts', postsController.posts);
 
 router.get('/sign-up', usersController.signUp);
 

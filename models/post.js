@@ -7,17 +7,17 @@ const postSchema =  new mongoose.Schema({
         type: String,
         required: true // true -> the data would be saved
     },
-    users: {
+    user: {
         // linking it to the user
         type: mongoose.Schema.Types.ObjectId, // it is a reference, this is refering to an objectId
         ref: 'User'  //refer to which Schema -> obviously User. So, User is the schema we are refering to.
     }
 }, {
-    timestamps: true 
+    timestamps: true //timestamps is something which automatically introduces two fields -> 'created at' and 'updated at'
 });
 
 // Before exporting we need to tell that this is going to a model in the database.
 const post = mongoose.model('Post', postSchema); // Post -> name of the model.
 
 // exporting the model. Wherever we use it we just import this file.
-module.exports = Post;
+module.exports = post;
