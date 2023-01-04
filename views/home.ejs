@@ -11,4 +11,18 @@
                         <textarea name="content"  cols="30" rows="3" placeholder="Type here..."></textarea>
                         <input type="submit" value="post">
                 </form>
+
+                <!-- WHERE I SHOW THESE POSTS -> in home views -->
+                <div id="posts-list-container">
+                        <ul>
+                                <!-- for loop -->
+                                <% for(post of posts) {%> 
+                                         <!-- list item for every posts -->
+                                        <li>
+                                                <%= post.content  %>
+                                        </li>
+                                <%} %>
+                        </ul>
+                </div>
+
         </section>
