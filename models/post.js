@@ -17,7 +17,7 @@ const postSchema =  new mongoose.Schema({
 });
 
 // Before exporting we need to tell that this is going to a model in the database.
-const post = mongoose.model('Post', postSchema); // Post -> name of the model.
+const Post = mongoose.model('Post', postSchema); // Post -> name of the model.
 
 // exporting the model. Wherever we use it we just import this file.
-module.exports = post;
+module.exports = Post;
