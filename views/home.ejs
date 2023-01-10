@@ -7,11 +7,16 @@
 
         <section class="feed-posts">
                 <h4>Posts</h4>
+                <!-- we display the post form only to those people, who have signed in -->
+                <!-- this is 1st level of check -->
+                <!-- if a user is not signed-in, why do i show the post form on the page -->
+                <% if(locals.user) { %> 
+                        <!-- if(user) -> error: user is not defined -> bcz. user is not been able to be fetch from locals, now locals is an object, so if we refer to the locals and just ask if this key is present -->
                 <form action="/posts/create" id="new-post-form" method="POST"> <!-- I am sending the data and making some changes to the databse, as in creating something new -> So this is going to be POST. -->
                         <textarea name="content"  cols="30" rows="3" placeholder="Type here..."></textarea>
                         <input type="submit" value="post">
                 </form>
-
+                <% } %>
                 <!-- WHERE I SHOW THESE POSTS -> in home views -->
                 <div id="posts-list-container">
                         <ul>
