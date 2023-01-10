@@ -19,10 +19,12 @@
                                 <% for(post of posts) {%> 
                                          <!-- list item for every posts -->
                                         <li>
-                                                <%= post.content  %>
+                                                <p>
+                                                        <%= post.content  %>
                                                 <small>
                                                         <%= post.user.name %>
                                                 </small>
+                                                </p>
                                         </li>
                                 <%} %>
                         </ul>
