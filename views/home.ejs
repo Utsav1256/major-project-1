@@ -30,8 +30,19 @@
                                                         <%= post.user.name %>
                                                 </small>
                                                 </p>
-                                                <div class="post-comment"></div>
-                                        </li>
+                                                <!-- wherever I displayed post, I need to display a comment's container -->
+                                                <div class="post-comment">
+                                                        <!-- To whom all do I need to show this form, only to those people who are signed-in -->
+                                                        <% if(locals.user) {%>
+                                                                <form action="/comments/create" method="post">
+                                                                        <input type="text" name="content" placeholder="Type here to add comment...">
+                                                                        <!-- we need to send, the id of the post to which the comments needs to be added -->
+                                                                        <input type="hidden" name="post" value="<%= post._id %>">
+                                                                        <input type="submit" value="Add Comment">
+                                                                </form>
+                                                        <% } %>
+                                                </div>
+                                 </li>
                                 <%} %>
                         </ul>
                 </div>
