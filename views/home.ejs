@@ -1,50 +1,67 @@
+<!-- Vriable content that we want to show -->
+<h1>Codeial / <%= title %></h1>
 
-        <!-- Vriable content that we want to show -->
-        <h1>
-                Codeial / <%= title %>
-        </h1>
-
-
-        <section class="feed-posts">
-                <h4>Posts</h4>
-                <!-- we display the post form only to those people, who have signed in -->
-                <!-- this is 1st level of check -->
-                <!-- if a user is not signed-in, why do i show the post form on the page -->
-                <% if(locals.user) { %> 
-                        <!-- if(user) -> error: user is not defined -> bcz. user is not been able to be fetch from locals, now locals is an object, so if we refer to the locals and just ask if this key is present -->
-                <form action="/posts/create" id="new-post-form" method="POST"> <!-- I am sending the data and making some changes to the databse, as in creating something new -> So this is going to be POST. -->
-                        <textarea name="content"  cols="30" rows="3" placeholder="Type here..."></textarea>
-                        <input type="submit" value="post">
-                </form>
-                <% } %>
-                <!-- WHERE I SHOW THESE POSTS -> in home views -->
-                <div id="posts-list-container">
-                        <ul>
-                                <!-- for loop -->
-                                <% for(post of posts) {%> 
-                                         <!-- list item for every posts -->
-                                        <li>
-                                                <p>
-                                                        <%= post.content  %>
-                                                <small>
-                                                        <%= post.user.name %>
-                                                </small>
-                                                </p>
-                                                <!-- wherever I displayed post, I need to display a comment's container -->
-                                                <div class="post-comment">
-                                                        <!-- To whom all do I need to show this form, only to those people who are signed-in -->
-                                                        <% if(locals.user) {%>
-                                                                <form action="/comments/create" method="post">
-                                                                        <input type="text" name="content" placeholder="Type here to add comment...">
-                                                                        <!-- we need to send, the id of the post to which the comments needs to be added -->
-                                                                        <input type="hidden" name="post" value="<%= post._id %>">
-                                                                        <input type="submit" value="Add Comment">
-                                                                </form>
-                                                        <% } %>
-                                                </div>
-                                 </li>
-                                <%} %>
-                        </ul>
-                </div>
-
-        </section>
+<section class="feed-posts">
+  <h4>Posts</h4>
+  <!-- we display the post form only to those people, who have signed in -->
+  <!-- this is 1st level of check -->
+  <!-- if a user is not signed-in, why do i show the post form on the page -->
+  <% if(locals.user) { %>
+  <!-- if(user) -> error: user is not defined -> bcz. user is not been able to be fetch from locals, now locals is an object, so if we refer to the locals and just ask if this key is present -->
+  <form action="/posts/create" id="new-post-form" method="POST">
+    <!-- I am sending the data and making some changes to the databse, as in creating something new -> So this is going to be POST. -->
+    <textarea
+      name="content"
+      cols="30"
+      rows="3"
+      placeholder="Type here..."
+      required
+    ></textarea>
+    <input type="submit" value="post" />
+  </form>
+  <% } %>
+  <!-- WHERE I SHOW THESE POSTS -> in home views -->
+  <div id="posts-list-container">
+    <ul>
+      <!-- for loop -->
+      <% for(post of posts) {%>
+      <!-- list item for every posts -->
+      <li>
+        <p>
+          <%= post.content %>
+          <small> <%= post.user.name %> </small>
+        </p>
+        <!-- wherever I displayed post, I need to display a comment's container -->
+        <div class="post-comment">
+          <!-- To whom all do I need to show this form, only to those people who are signed-in -->
+          <% if(locals.user) {%>
+          <form action="/comments/create" method="post">
+            <input
+              type="text"
+              name="content"
+              placeholder="Type here to add comment..."
+              required
+            />
+            <!-- we need to send, the id of the post to which the comments needs to be added -->
+            <input type="hidden" name="post" value="<%= post._id %>" />
+            <input type="submit" value="Add Comment" />
+          </form>
+          <% } %>
+        </div>
+      </li>
+      <!-- Displaying comments -->
+      <div class="post-comments-list">
+        <ul id="post-comments-<%= post._id %>">
+          <% for(comment of post.comments) { %>
+          <p>
+            <%= comment.content %>
+            <br />
+            <small> <%= comment.user.name %> </small>
+          </p>
+          <% } %>
+        </ul>
+      </div>
+      <% } %>
+    </ul>
+  </div>
+</section>
